@@ -34,28 +34,40 @@ export default function DogMenuPage() {
         <BackButton />
       </div>
 
-      {/* Hero band */}
-      <section className="bg-cobalt h-80 flex flex-col items-center justify-center text-center px-6">
-        <h1 className="font-bebas text-7xl text-white tracking-wide mb-3">The Dog Menu</h1>
-        <p className="font-serif italic text-linen/90 text-xl">
-          The finest and freshest produce, for your cultured canine.
-        </p>
-      </section>
-
-      {/* Full-width dog bowl image */}
-      <div className="relative h-[400px] w-full -rotate-[1deg] shadow-amber overflow-hidden">
-        <Image
-          src="/assets/cafe/dog-bowl.png"
-          alt="Gourmet dog bowl at Neighbours Café"
-          fill
-          className="object-cover"
-          sizes="100vw"
+      {/* ── HERO: dog bowl image IS the header background ─────────────────────
+          The dog bowl photo bleeds out as a CSS background-image with a
+          jungle green multiply overlay — art is structural, not decorative.
+      ──────────────────────────────────────────────────────────────────────── */}
+      <section
+        className="relative h-80 flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+        style={{
+          backgroundImage: "url('/assets/cafe/dog-bowl.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Jungle green colour wash — the dog bowl photo bleeds through */}
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: 'rgba(58,125,68,0.82)', mixBlendMode: 'multiply' }}
         />
-      </div>
+        {/* Extra legibility layer */}
+        <div className="absolute inset-0 bg-jungle/55" />
+        {/* Amber accent bottom border */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-amber" />
+
+        <div className="relative z-10">
+          <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">For Your Cultured Canine</p>
+          <h1 className="font-bebas text-7xl text-white tracking-wide mb-3">The Dog Menu</h1>
+          <p className="font-serif italic text-linen/90 text-lg">
+            The finest and freshest produce, for your four-legged mate.
+          </p>
+        </div>
+      </section>
 
       {/* Info card */}
       <section className="max-w-3xl mx-auto w-full px-6 mt-12 mb-4">
-        <div className="bg-white border-l-4 border-jungle px-8 py-6 rounded-sm shadow-amber">
+        <div className="bg-white border-l-4 border-jungle px-8 py-6 shadow-amber">
           <p className="font-sans text-sm text-charcoal leading-relaxed">
             Fresh water is always available. Our courtyard is fully fenced. All ingredients are vet-checked and dog-safe.
           </p>
@@ -66,7 +78,8 @@ export default function DogMenuPage() {
       <section className="max-w-3xl mx-auto w-full px-6 py-12">
 
         {/* Starters */}
-        <h2 className="font-bebas text-4xl text-jungle mb-4">Starters</h2>
+        <h2 className="font-bebas text-4xl text-jungle mb-1 paint-underline">Starters</h2>
+        <div className="mb-6" />
         <DogItem
           name="Peking Duck Jerky"
           flavour="Duck a l'jerke. An indulgent chew, low in fat, high in protein."
@@ -79,7 +92,8 @@ export default function DogMenuPage() {
         />
 
         {/* Main Plates */}
-        <h2 className="font-bebas text-4xl text-jungle mt-12 mb-4">Main Plates</h2>
+        <h2 className="font-bebas text-4xl text-jungle mt-14 mb-1 paint-underline">Main Plates</h2>
+        <div className="mb-6" />
         <DogItem
           name="Lamb Shank Bone"
           flavour="Large cut, oven baked to pawfection. Calcium and phosphorus for healthy bones."
@@ -97,7 +111,8 @@ export default function DogMenuPage() {
         />
 
         {/* Dessert */}
-        <h2 className="font-bebas text-4xl text-jungle mt-12 mb-4">Dessert</h2>
+        <h2 className="font-bebas text-4xl text-jungle mt-14 mb-1 paint-underline">Dessert</h2>
+        <div className="mb-6" />
         <DogItem
           name="Chicken Necks (x2)"
           flavour="Locally sourced, perfectly dehydrated. Crunchy texture with a drool-inducing aroma."

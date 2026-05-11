@@ -96,10 +96,22 @@ export default function Home() {
           />
         </motion.div>
 
-        {/* Always-on layered gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/65" />
+        {/* Layered gradient: dark top for nav legibility, atmospheric bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/70" />
 
-        {/* Hero content — visible on load */}
+        {/* Graffiti texture bled into the hero — adds urban grain without covering the photo */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/cafe/graffiti.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            mixBlendMode: 'overlay',
+            opacity: 0.12,
+          }}
+        />
+
+        {/* Hero content */}
         <motion.div
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-16"
           style={{ opacity: heroOpacity }}
@@ -168,8 +180,8 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── STATS BAR ────────────────────────────────────────────────────────── */}
-      <section className="bg-cobalt border-b-4 border-amber py-10 px-6">
+      {/* ── STATS BAR — graffiti texture baked into cobalt ───────────────────── */}
+      <section className="relative bg-cobalt border-b-4 border-amber py-10 px-6 overflow-hidden graffiti-texture artwork-texture">
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <StatChip value="4pm" label="Open daily until" />
           <div className="hidden md:block w-px h-10 bg-linen/20" />
@@ -182,36 +194,55 @@ export default function Home() {
       </section>
 
       {/* ── SECTION 2: THE FEELING ──────────────────────────────────────────── */}
-      <section className="relative bg-cobalt min-h-[520px] flex items-center overflow-hidden">
-        <div className="absolute right-0 top-0 h-full w-[55%] hidden md:block">
-          <Image
-            src="/assets/cafe/interior artwork.jpg"
-            alt="Neighbours Café interior folk art"
-            fill
-            className="object-cover object-left"
-            sizes="55vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-cobalt via-cobalt/50 to-transparent" />
-        </div>
-
+      {/*
+        Interior artwork is NOT in a box here. It's bled as a css background
+        on the right panel, with cobalt multiply overlay — so the folk art
+        BECOMES the colour and texture of the section, not a photo inside it.
+      */}
+      <section className="relative bg-cobalt min-h-[560px] flex items-stretch overflow-hidden">
+        {/* Left: text content */}
         <motion.div
-          className="relative z-10 max-w-xl pl-8 md:pl-20 py-20 pr-8"
+          className="relative z-10 flex-1 max-w-xl pl-8 md:pl-20 py-20 pr-8 flex flex-col justify-center"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">St Kilda East · Open until 4pm</p>
-          <h2 className="font-bebas text-5xl md:text-6xl text-white leading-tight mb-6">
-            A Café That Feels Like Your Street
+          <h2 className="font-bebas text-5xl md:text-7xl text-white leading-[0.92] mb-6">
+            A Café That<br />Feels Like<br />Your Street
           </h2>
-          <p className="font-sans text-base text-white/85 leading-relaxed mb-8">
+          <p className="font-sans text-base text-white/80 leading-relaxed mb-8 max-w-sm">
             We&apos;re on Chapel St, but we&apos;re not in a rush. Come for the coffee, stay for the courtyard, bring the dog.
           </p>
           <Link href="/about" className="font-sans text-sm text-amber hover:text-white transition-colors underline underline-offset-4">
             Our story →
           </Link>
         </motion.div>
+
+        {/* Right: interior artwork as structural background panel, not a photo in a div */}
+        <div
+          className="hidden md:block absolute right-0 top-0 h-full w-[52%]"
+          style={{
+            backgroundImage: "url('/assets/cafe/interior artwork.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'left center',
+          }}
+          aria-hidden="true"
+        >
+          {/* Cobalt bleeds LEFT over the image — creates split without a border */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, #1C5FAD 0%, rgba(28,95,173,0.55) 40%, rgba(28,95,173,0.1) 100%)',
+            }}
+          />
+          {/* Amber accent stripe at the seam */}
+          <div
+            className="absolute top-0 left-0 bottom-0 w-1"
+            style={{ background: 'linear-gradient(to bottom, transparent 10%, #E8A020 30%, #E8A020 70%, transparent 90%)' }}
+          />
+        </div>
       </section>
 
       {/* ── SECTION 3: SIGNATURE DISHES ─────────────────────────────────────── */}
@@ -222,11 +253,11 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4"
+            className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4"
           >
             <div>
-              <p className="font-sans text-xs uppercase tracking-widest text-amber mb-2">On the Menu</p>
-              <h2 className="font-bebas text-5xl text-cobalt">House Favourites</h2>
+              <p className="font-sans text-xs uppercase tracking-widest text-amber mb-3">On the Menu</p>
+              <h2 className="font-bebas text-6xl text-cobalt paint-underline">House Favourites</h2>
             </div>
             <Link href="/menu" className="font-sans text-sm text-charcoal/60 hover:text-folk-red transition-colors underline-offset-4 hover:underline shrink-0">
               See all dishes →
@@ -285,52 +316,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SECTION 5: ART AS UI ────────────────────────────────────────────── */}
-      <section className="relative h-[560px] overflow-hidden">
-        <Image
-          src="/assets/cafe/Graffiti 3.jpg"
-          alt="Neighbours Café street mural"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-
-        {/* Angled cobalt overlay */}
+      {/* ── SECTION 5: ART AS UI ─────────────────────────────────────────────
+          The graffiti here IS the section. It is the CSS background of the
+          entire panel — not a photo sitting in a container. The cobalt angle
+          is burned in via ::before and the amber seam is a CSS gradient.
+          The polaroid-style overlays float ON TOP of the mural background.
+      ──────────────────────────────────────────────────────────────────────── */}
+      <section
+        className="relative h-[560px] overflow-hidden grain-overlay"
+        style={{
+          backgroundImage: "url('/assets/cafe/Graffiti 3.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Angled cobalt wash — bleeds out of the mural, not over a photo */}
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(108deg, transparent 38%, rgba(28,95,173,0.93) 38%)' }}
+          style={{
+            background: 'linear-gradient(108deg, transparent 36%, rgba(28,95,173,0.92) 36%)',
+          }}
         />
-        {/* Amber accent line */}
+        {/* Amber seam line at the diagonal break */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'linear-gradient(108deg, transparent 37.4%, #E8A020 37.4%, #E8A020 38.1%, transparent 38.1%)' }}
+          style={{
+            background: 'linear-gradient(108deg, transparent 35.5%, #E8A020 35.5%, #E8A020 36.3%, transparent 36.3%)',
+          }}
         />
 
-        {/* Polaroid photos over graffiti */}
-        <div className="absolute left-6 md:left-16 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-10">
+        {/* Polaroids — raw snapshots pinned to the mural wall */}
+        <div className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 flex flex-col gap-5 z-10">
           <motion.div
-            className="relative w-44 h-32 -rotate-[2deg] shadow-amber-lg overflow-hidden"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="relative bg-white p-2 pb-8 shadow-2xl -rotate-[3deg]"
+            style={{ width: '176px' }}
+            initial={{ opacity: 0, x: -24, rotate: -6 }}
+            whileInView={{ opacity: 1, x: 0, rotate: -3 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            whileHover={{ rotate: 0, scale: 1.05 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ rotate: 0, scale: 1.06 }}
           >
-            <Image src="/assets/cafe/interior artwork.jpg" alt="Interior folk art" fill className="object-cover" sizes="176px" />
+            <div className="relative h-28 w-full overflow-hidden">
+              <Image src="/assets/cafe/interior artwork.jpg" alt="Interior folk art" fill className="object-cover" sizes="160px" />
+            </div>
+            <p className="font-sans text-[0.55rem] uppercase tracking-wider text-charcoal/50 text-center mt-2">inside</p>
           </motion.div>
+
           <motion.div
-            className="relative w-44 h-32 rotate-[1.5deg] shadow-amber-lg overflow-hidden ml-8"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="relative bg-white p-2 pb-8 shadow-2xl rotate-[2deg] ml-8"
+            style={{ width: '176px' }}
+            initial={{ opacity: 0, x: -24, rotate: 5 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 2 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.22 }}
-            whileHover={{ rotate: 0, scale: 1.05 }}
+            transition={{ duration: 0.6, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ rotate: 0, scale: 1.06 }}
           >
-            <Image src="/assets/cafe/graffiti.jpg" alt="Graffiti wall" fill className="object-cover" sizes="176px" />
+            <div className="relative h-28 w-full overflow-hidden">
+              <Image src="/assets/cafe/COURTYARD.jpeg" alt="Courtyard" fill className="object-cover" sizes="160px" />
+            </div>
+            <p className="font-sans text-[0.55rem] uppercase tracking-wider text-charcoal/50 text-center mt-2">courtyard</p>
           </motion.div>
         </div>
 
-        {/* Text on cobalt side */}
+        {/* Text on the cobalt side */}
         <motion.div
           className="absolute right-6 md:right-16 top-1/2 -translate-y-1/2 text-right z-10 max-w-xs md:max-w-sm"
           initial={{ opacity: 0, x: 30 }}
@@ -379,7 +427,7 @@ export default function Home() {
           >
             <p className="font-sans text-xs uppercase tracking-widest text-jungle mb-4">Dog Friendly</p>
             <h2 className="font-bebas text-5xl md:text-6xl text-cobalt mb-6 leading-tight">
-              Your Dog Is As Welcome<br />As You Are.
+              Your Dog Is As<br />Welcome As You Are.
             </h2>
             <p className="font-sans text-base text-charcoal/75 leading-relaxed mb-8">
               We&apos;ve had a dog menu since day one. Fresh water always out. The courtyard is theirs as much as yours.
@@ -395,8 +443,28 @@ export default function Home() {
       </section>
 
       {/* ── SECTION 7: FIND US STRIP ─────────────────────────────────────────── */}
-      <section className="bg-cobalt border-t-4 border-amber py-16 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+      {/*
+        The exterior mural is used as a CSS background behind this section —
+        NOT a photo above or below it. The mural IS the section background.
+        Cobalt sits on top via multiply blend so the graffiti bleeds through.
+      */}
+      <section
+        className="relative border-t-4 border-amber py-16 px-6 md:px-16 overflow-hidden"
+        style={{
+          backgroundImage: "url('/assets/cafe/Exterior artwork.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center top',
+        }}
+      >
+        {/* Cobalt colour-wash over the exterior mural */}
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: 'rgba(28,95,173,0.88)', mixBlendMode: 'multiply' }}
+        />
+        {/* Extra darkening layer so text stays legible */}
+        <div className="absolute inset-0 bg-cobalt/60" />
+
+        <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Hours</p>
             <ul className="font-sans text-sm text-white leading-8">

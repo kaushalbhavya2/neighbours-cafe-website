@@ -59,19 +59,35 @@ export default function MenuPage() {
         <BackButton />
       </div>
 
-      {/* Hero band */}
-      <section className="relative h-[400px] overflow-hidden">
-        <Image
-          src="/assets/cafe/MURAL FOOD.jpeg"
-          alt="Neighbours Café food and mural"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
+      {/* ── HERO: MURAL FOOD image IS the header — with graffiti texture layered
+              in as a CSS background blend, not a second image in a box. ── */}
+      <section
+        className="relative h-[400px] overflow-hidden"
+        style={{
+          backgroundImage: "url('/assets/cafe/MURAL FOOD.jpeg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Graffiti texture bled over the food photo via multiply blend */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/assets/cafe/Graffiti 3.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            mixBlendMode: 'multiply',
+            opacity: 0.18,
+          }}
         />
-        <div className="absolute inset-0 bg-cobalt/55" />
+        {/* Cobalt overlay for legibility */}
+        <div className="absolute inset-0 bg-cobalt/60" />
+        {/* Amber bottom border */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-amber" />
+
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <h1 className="font-bebas text-7xl text-white tracking-wide mb-3">The Menu</h1>
+          <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Brunch until 4pm</p>
+          <h1 className="font-bebas text-7xl md:text-8xl text-white tracking-wide mb-3">The Menu</h1>
           <p className="font-serif italic text-linen/90 text-xl max-w-lg leading-relaxed">
             Everything made fresh. Most of it plant-based. All of it worth staying for.
           </p>
@@ -87,7 +103,7 @@ export default function MenuPage() {
               <TabsTrigger
                 key={tab}
                 value={tab}
-                className="flex-1 font-bebas text-xl tracking-wide rounded-none border-b-4 border-transparent data-active:border-folk-red data-active:text-folk-red text-charcoal/60 hover:text-charcoal transition-colors py-3 h-auto"
+                className="flex-1 font-bebas text-2xl tracking-wider rounded-none border-b-4 border-transparent data-active:border-folk-red data-active:text-folk-red text-charcoal/50 hover:text-charcoal hover:border-charcoal/20 transition-all py-4 h-auto"
               >
                 {tab === 'breakfast' ? 'Breakfast' : tab === 'lunch' ? 'Lunch' : 'Drinks'}
               </TabsTrigger>
