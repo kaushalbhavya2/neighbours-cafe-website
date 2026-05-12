@@ -9,20 +9,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer
-      className="relative py-14 px-8 overflow-hidden"
-      style={{
-        backgroundImage: "url('/assets/cafe/graffiti.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* Charcoal colour wash — graffiti bleeds subtly through */}
-      <div
-        className="absolute inset-0"
-        style={{ backgroundColor: 'rgba(26,26,26,0.93)', mixBlendMode: 'multiply' }}
-      />
-      {/* Amber top border */}
+    <footer className="relative overflow-hidden bg-charcoal px-8 py-14">
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-amber/40" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -34,7 +21,7 @@ export default function Footer() {
               Café · St Kilda East
             </p>
             <p className="font-sans text-xs text-linen/40 mt-3 leading-relaxed">
-              42 Chapel St<br />St Kilda East VIC 3183
+              42 Chapel St<br />St Kilda East VIC 3182
             </p>
           </div>
 
@@ -74,7 +61,7 @@ export default function Footer() {
                 (03) 90778950
               </a>
               <a
-                href="https://maps.google.com/?q=42+Chapel+St+St+Kilda+East+VIC+3183"
+                href="https://www.google.com/maps/search/?api=1&query=Neighbours+Cafe+42+Chapel+Street+St+Kilda+East+VIC+3182+Australia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-sans text-sm text-amber hover:text-linen transition-colors"

@@ -320,7 +320,7 @@ COLUMN 2 — Location:
 - 12px gap
 - Body Inter 0.95rem white line-height 2.0:
   "42 Chapel St"
-  "St Kilda East VIC 3183"
+  "St Kilda East VIC 3182"
   "(03) 90778950"
 - Amber link below: Inter 0.85rem amber: "Get directions →" — underline on hover
 
@@ -585,7 +585,7 @@ MAP
 Full-bleed, height 500px.
 Map placeholder: cobalt blue background with centred pin icon and white text:
 - Pin icon: 48px, white
-- Text: Inter 1rem white: "42 Chapel St, St Kilda East VIC 3183"
+- Text: Inter 1rem white: "42 Chapel St, St Kilda East VIC 3182"
 - Below: amber link "Open in Google Maps →"
 
 Border above map: 3px solid amber #E8A020.

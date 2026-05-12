@@ -1,7 +1,32 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import BackButton from '@/components/BackButton'
+import { absoluteUrl } from '@/lib/seo'
+
+export const metadata: Metadata = {
+  title: 'About Neighbours Café St Kilda East',
+  description:
+    'Neighbours Café is a community brunch spot on Chapel Street, St Kilda East: dog-friendly, vegan-friendly, art-filled and open daily until 4pm.',
+  alternates: {
+    canonical: absoluteUrl('/about'),
+  },
+  openGraph: {
+    title: 'About Neighbours Café St Kilda East',
+    description:
+      'The story behind Neighbours Café, the dog-friendly Chapel Street brunch cafe with murals, courtyard seating and vegan-friendly food.',
+    url: absoluteUrl('/about'),
+    images: [
+      {
+        url: absoluteUrl('/assets/cafe/graffiti 2.jpg'),
+        width: 1200,
+        height: 630,
+        alt: 'Street art wall at Neighbours Café',
+      },
+    ],
+  },
+}
 
 export default function AboutPage() {
   return (
@@ -16,7 +41,7 @@ export default function AboutPage() {
       <section
         className="relative pt-28 pb-24 px-6 overflow-hidden"
         style={{
-          backgroundImage: "url('/assets/cafe/graffiti 2.jpg')",
+          backgroundImage: "url('/assets/cafe/Hero courtyard .PNG')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -59,10 +84,10 @@ export default function AboutPage() {
           {/* Text spans 3 columns */}
           <div className="md:col-span-3 space-y-6">
             <p className="font-sans text-base text-charcoal leading-relaxed">
-              Neighbours started as a simple idea — a place on Chapel St where you didn&apos;t have to rush, where the food was honest and the coffee was properly made. We wanted somewhere that felt like the neighbourhood: welcoming, a little rough around the edges, genuinely warm. The courtyard came first, really. That open sky and those yellow umbrellas set the tone for everything.
+              Neighbours started as a simple idea — a brunch café on Chapel St where you didn&apos;t have to rush, where the food was honest, the coffee was properly made, and the dog could come too. We wanted somewhere that felt like St Kilda East: welcoming, a little rough around the edges, genuinely warm. The courtyard came first, really. That open sky and those yellow umbrellas set the tone for everything.
             </p>
             <p className="font-sans text-base text-charcoal leading-relaxed">
-              The art came naturally. St Kilda East has always been a place where creativity lives on the walls, and we wanted that inside too. Every canvas is from a real artist. Every mural was painted by someone who left something of themselves here.
+              The art came naturally. St Kilda East has always been a place where creativity lives on the walls, and we wanted that inside too. Every canvas is from a real artist. Every mural was painted by someone who left something of themselves here. The menu follows the same spirit: vegan-friendly, generous, colourful, and made for the whole table.
             </p>
             <p className="font-sans text-base text-charcoal leading-relaxed">
               If your dog falls asleep under the table and you end up staying two hours longer than you planned — that&apos;s exactly what we had in mind.
@@ -146,7 +171,7 @@ export default function AboutPage() {
       {/* ── CLOSING STRIP ─────────────────────────────────────────────────── */}
       <div className="bg-linen py-12 text-center">
         <p className="font-sans text-xs uppercase tracking-widest text-amber">
-          42 Chapel St, St Kilda East · Open until 4pm
+          42 Chapel St, St Kilda East VIC 3182 · Open until 4pm
         </p>
       </div>
 

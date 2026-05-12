@@ -1,5 +1,5 @@
 # Local SEO Audit — Neighbours Café
-**Business:** Neighbours Café | 42 Chapel St, St Kilda East VIC 3183
+**Business:** Neighbours Café | 42 Chapel St, St Kilda East VIC 3182
 **Audit Date:** May 2026
 **Goal:** Rank for local brunch, dog-friendly café, and vegan dining searches within the St Kilda, Elwood, Balaclava, Prahran, South Yarra catchment (~3km radius). Drive qualified foot traffic.
 
@@ -295,7 +295,7 @@ How to Find Us — Neighbours Café, St Kilda East
 5. cafe with outdoor seating St Kilda
 
 **Key Copy Points to Include:**
-- Full NAP as text (not image): Neighbours Café, 42 Chapel St, St Kilda East VIC 3183, phone number, email
+- Full NAP as text (not image): Neighbours Café, 42 Chapel St, St Kilda East VIC 3182, phone number, email
 - Hours in text format: Open daily until 4:30pm (include open time if applicable)
 - Embed a Google Maps iframe for the location
 - Write a short "Getting Here" section covering: nearby tram stops (routes on Chapel St), parking, proximity to Carlisle Street, St Kilda beach, and Balaclava station — this creates natural geographic keyword coverage
@@ -407,7 +407,7 @@ Add this JSON-LD block to every page of the website (in the `<head>` or just bef
     "streetAddress": "42 Chapel St",
     "addressLocality": "St Kilda East",
     "addressRegion": "VIC",
-    "postalCode": "3183",
+    "postalCode": "3182",
     "addressCountry": "AU"
   },
   "geo": {
@@ -425,7 +425,7 @@ Add this JSON-LD block to every page of the website (in the `<head>` or just bef
   ],
   "servesCuisine": ["Australian", "Vegan", "Vegetarian", "Brunch"],
   "priceRange": "$$",
-  "hasMap": "https://maps.google.com/?q=42+Chapel+St+St+Kilda+East+VIC+3183",
+  "hasMap": "https://maps.google.com/?q=42+Chapel+St+St+Kilda+East+VIC+3182",
   "amenityFeature": [
     {"@type": "LocationFeatureSpecification", "name": "Outdoor seating", "value": true},
     {"@type": "LocationFeatureSpecification", "name": "Dog friendly", "value": true},
@@ -450,12 +450,12 @@ NAP = Name, Address, Phone. Every mention of the business across the web must be
 **Canonical NAP format (use this exactly, everywhere):**
 ```
 Neighbours Café
-42 Chapel St, St Kilda East VIC 3183
+42 Chapel St, St Kilda East VIC 3182
 ```
 
 - The website footer, Contact/Find Us page, GBP, Facebook, Instagram bio, Yelp, TripAdvisor, Zomato, Broadsheet listing, and any directory must use this exact format
 - Do not abbreviate "Street" to "St" in some places and spell it out in others — pick one format (abbreviated "St" is fine) and use it universally
-- Do not list the suburb as "St Kilda" on some platforms and "St Kilda East" on others — it is St Kilda East (postcode 3183)
+- Do not list the suburb as "St Kilda" on some platforms and "St Kilda East" on others — it is St Kilda East (postcode 3182)
 - Get listed on: Google Business Profile, Apple Maps (Apple Business Connect), Yelp Australia, TripAdvisor, Zomato, Broadsheet, TimeOut Melbourne, The Urban List
 
 ---

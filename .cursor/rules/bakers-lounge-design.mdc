@@ -1,0 +1,41 @@
+---
+description: Bakers Lounge / Neighbours Cafe UI and UX rules
+globs:
+  - "src/**/*"
+  - ".impeccable.md"
+  - "SUPERDESIGN_PROMPT.md"
+alwaysApply: true
+---
+
+# UI/UX Direction
+
+Read `.impeccable.md` before making visual changes.
+
+This is the real project: `/Users/bhavyakaushal/dev/neighbours-cafe/WEB`.
+
+Design as a senior UI/UX designer and frontend engineer. Keep the existing Next.js app structure and improve the product quality in place.
+
+## Must Keep
+
+- Local assets from `public/assets/cafe`.
+- Full-bleed, image-led homepage composition.
+- Warm St Kilda East cafe tone: brunch, courtyard, dogs, street art.
+- Existing route pages: `/`, `/menu`, `/dog-menu`, `/find-us`, `/about`.
+- Framer Motion/GSAP/Lenis stack if motion is needed.
+
+## Improve Toward
+
+- Stronger first-viewport brand signal.
+- More intentional hero text placement and image readability.
+- Clear, useful CTAs for menu, dog menu, directions, and story.
+- Better section rhythm, spacing, and mobile typography.
+- Subtle graffiti/artwork integration through backgrounds, seams, dividers, and hover details.
+
+## Avoid
+
+- Remote stock images.
+- Generic cafe templates.
+- Fake graffiti graphics.
+- Overbuilt card grids.
+- Text over busy image areas.
+- In-app explanations of design choices.

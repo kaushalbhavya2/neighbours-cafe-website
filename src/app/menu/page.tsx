@@ -1,10 +1,32 @@
-'use client'
-
-import Image from 'next/image'
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import BackButton from '@/components/BackButton'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { absoluteUrl } from '@/lib/seo'
+
+export const metadata: Metadata = {
+  title: 'Vegan-Friendly Brunch Menu St Kilda East',
+  description:
+    'Vegan Chilli Hash, Greens & Grains Bowl, coffee, smoothies and more. Explore the vegan-friendly brunch menu at Neighbours Café on Chapel Street.',
+  alternates: {
+    canonical: absoluteUrl('/menu'),
+  },
+  openGraph: {
+    title: 'Vegan-Friendly Brunch Menu St Kilda East | Neighbours Café',
+    description:
+      'Plant-based brunch, healthy bowls, coffee and Chapel Street cafe favourites at Neighbours Café.',
+    url: absoluteUrl('/menu'),
+    images: [
+      {
+        url: absoluteUrl('/assets/cafe/vegan-chilli-hash.png'),
+        width: 1200,
+        height: 630,
+        alt: 'Vegan Chilli Hash at Neighbours Café',
+      },
+    ],
+  },
+}
 
 // ─── MenuItem ────────────────────────────────────────────────────────────────
 function MenuItem({
@@ -89,13 +111,19 @@ export default function MenuPage() {
           <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Brunch until 4pm</p>
           <h1 className="font-bebas text-7xl md:text-8xl text-white tracking-wide mb-3">The Menu</h1>
           <p className="font-serif italic text-linen/90 text-xl max-w-lg leading-relaxed">
-            Everything made fresh. Most of it plant-based. All of it worth staying for.
+            Vegan-friendly brunch, healthy bowls, proper coffee, and Chapel Street favourites made fresh until 4pm.
           </p>
         </div>
       </section>
 
       {/* Tabs */}
       <section className="flex-1 px-4 md:px-16 py-12">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Vegan-friendly brunch in St Kilda East</p>
+          <p className="font-sans text-base leading-relaxed text-charcoal/75">
+            Our Chapel Street menu is built for mixed tables: plant-based brunch, healthy breakfast plates, burgers, salads, smoothies, and coffee for St Kilda East locals, Balaclava neighbours, and anyone heading through Chapel Street.
+          </p>
+        </div>
         <Tabs defaultValue="breakfast" className="w-full max-w-4xl mx-auto">
           {/* Tab list */}
           <TabsList className="mb-10 flex w-full gap-0 bg-transparent h-auto p-0 rounded-none border-b-2 border-charcoal/10">

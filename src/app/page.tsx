@@ -80,11 +80,10 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="flex flex-col">
+    <main id="top" className="flex flex-col">
       <Nav />
-
       {/* ── SECTION 1: HERO ─────────────────────────────────────────────────── */}
-      <section ref={heroRef} className="relative h-screen overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0 w-full h-full">
           <Image
             src="/assets/cafe/Hero courtyard .PNG"
@@ -96,72 +95,68 @@ export default function Home() {
           />
         </motion.div>
 
-        {/* Layered gradient: dark top for nav legibility, atmospheric bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/70" />
-
-        {/* Graffiti texture bled into the hero — adds urban grain without covering the photo */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/cafe/graffiti.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            mixBlendMode: 'overlay',
-            opacity: 0.12,
-          }}
-        />
+        {/* Layered gradient: dark top for nav, calm left-side reading area, atmospheric bottom */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,18,28,0.86)_0%,rgba(8,18,28,0.58)_38%,rgba(8,18,28,0.18)_72%,rgba(8,18,28,0.36)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/42 via-transparent to-black/68" />
 
         {/* Hero content */}
         <motion.div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-16"
+          className="absolute inset-0 flex items-end px-6 pb-20 pt-28 md:px-16 md:pb-16"
           style={{ opacity: heroOpacity }}
         >
-          <motion.p
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="font-sans text-xs uppercase tracking-[0.25em] text-amber mb-6"
-          >
-            42 Chapel St · St Kilda East · Open until 4pm
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="font-bebas text-[5.5rem] md:text-[9rem] text-white uppercase leading-[0.88] tracking-wide mb-8"
-          >
-            Brunch.<br />Dogs.<br />Chapel St.
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="font-sans text-base md:text-lg text-white/85 mb-10 max-w-sm"
-          >
-            Brunch until 4pm. Dogs always welcome.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 1.1 }}
-            className="flex gap-4 flex-wrap justify-center"
-          >
-            <Link
-              href="/menu"
-              className="font-sans font-semibold text-sm bg-folk-red text-white px-8 py-3 hover:bg-folk-red/85 transition-all hover:scale-105 active:scale-100"
+          <div className="max-w-3xl text-left">
+            <motion.p
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="mb-5 w-fit bg-amber px-3 py-2 font-sans text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-charcoal shadow-[6px_6px_0_rgba(217,79,61,0.88)]"
             >
-              VIEW MENU
-            </Link>
-            <Link
-              href="/find-us"
-              className="font-sans font-semibold text-sm border-2 border-white text-white px-8 py-3 hover:bg-white hover:text-cobalt transition-all hover:scale-105 active:scale-100"
+              42 Chapel St · Corner of Inkerman
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 34 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.95, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              className="font-bebas text-[5.3rem] uppercase leading-[0.82] tracking-wide text-white md:text-[9.5rem] lg:text-[11rem]"
             >
-              FIND US
-            </Link>
-          </motion.div>
+              Neighbours<br />Cafe
+            </motion.h1>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.82, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-6 max-w-xl border-l-4 border-amber pl-5"
+            >
+              <p className="font-serif text-2xl italic leading-snug text-linen md:text-3xl">
+                Big brunch, good coffee, dogs in the courtyard.
+              </p>
+              <p className="mt-4 font-sans text-sm uppercase tracking-[0.18em] text-linen/70">
+                Dog-friendly brunch in St Kilda East · Open daily until 4pm
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 1.08 }}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <Link
+                href="/menu"
+                className="font-sans text-sm font-semibold bg-folk-red px-8 py-3 text-white transition-all hover:-translate-y-1 hover:bg-amber hover:text-charcoal active:translate-y-0"
+              >
+                VIEW MENU
+              </Link>
+              <Link
+                href="/find-us"
+                className="font-sans text-sm font-semibold border-2 border-linen px-8 py-3 text-linen transition-all hover:-translate-y-1 hover:bg-linen hover:text-cobalt active:translate-y-0"
+              >
+                GET DIRECTIONS
+              </Link>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Scroll indicator */}
@@ -185,11 +180,11 @@ export default function Home() {
         <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <StatChip value="4pm" label="Open daily until" />
           <div className="hidden md:block w-px h-10 bg-linen/20" />
-          <StatChip value="100%" label="Dogs welcome" />
+          <StatChip value="Dogs" label="Welcome outside" />
           <div className="hidden md:block w-px h-10 bg-linen/20" />
           <StatChip value="10+" label="Vegan dishes" />
           <div className="hidden md:block w-px h-10 bg-linen/20" />
-          <StatChip value="2013" label="Est. Chapel St" />
+          <StatChip value="42" label="Chapel Street" />
         </div>
       </section>
 
@@ -213,7 +208,7 @@ export default function Home() {
             A Café That<br />Feels Like<br />Your Street
           </h2>
           <p className="font-sans text-base text-white/80 leading-relaxed mb-8 max-w-sm">
-            We&apos;re on Chapel St, but we&apos;re not in a rush. Come for the coffee, stay for the courtyard, bring the dog.
+            We&apos;re a St Kilda East brunch café on Chapel Street with good coffee, vegan-friendly plates, healthy brunch options, and a dog-friendly outdoor courtyard made for slow mornings.
           </p>
           <Link href="/about" className="font-sans text-sm text-amber hover:text-white transition-colors underline underline-offset-4">
             Our story →
@@ -256,7 +251,7 @@ export default function Home() {
             className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4"
           >
             <div>
-              <p className="font-sans text-xs uppercase tracking-widest text-amber mb-3">On the Menu</p>
+              <p className="font-sans text-xs uppercase tracking-widest text-amber mb-3">On the Menu · Vegan-Friendly Brunch</p>
               <h2 className="font-bebas text-6xl text-cobalt paint-underline">House Favourites</h2>
             </div>
             <Link href="/menu" className="font-sans text-sm text-charcoal/60 hover:text-folk-red transition-colors underline-offset-4 hover:underline shrink-0">
@@ -269,7 +264,7 @@ export default function Home() {
               image="/assets/cafe/vegan-chilli-hash.png"
               tag="House Favourite"
               name="Vegan Chilli Hash"
-              description="Sweet potato, mushrooms, kale, roasted cauliflower, chickpea hummus, pomegranate, dukkha"
+              description="A plant-based brunch favourite with sweet potato, mushrooms, kale, roasted cauliflower, chickpea hummus, pomegranate, and dukkha."
               price="$22.90"
               delay={0}
             />
@@ -277,7 +272,7 @@ export default function Home() {
               image="/assets/cafe/greens-grains-bowl.png"
               tag="Vegan"
               name="Greens & Grains Bowl"
-              description="Mograbieh, super seeds, kale, sautéed greens, cherry tomatoes, Danish feta, asparagus, two poached eggs"
+              description="A healthy brunch bowl of mograbieh, super seeds, kale, sautéed greens, cherry tomatoes, Danish feta, asparagus, and two poached eggs."
               price="$21.90"
               delay={0.12}
             />
@@ -311,7 +306,7 @@ export default function Home() {
 
         <div className="bg-linen py-10 px-6 md:px-16">
           <p className="font-sans text-base text-charcoal/75 leading-relaxed max-w-xl">
-            Big enough to spread out. Small enough to feel like yours. Yellow umbrellas, open sky, dogs welcome at every table.
+            Big enough to spread out. Small enough to feel like yours. Yellow umbrellas, open sky, and dogs welcome at every outdoor table for brunch with outdoor seating in St Kilda East.
           </p>
         </div>
       </section>
@@ -430,7 +425,7 @@ export default function Home() {
               Your Dog Is As<br />Welcome As You Are.
             </h2>
             <p className="font-sans text-base text-charcoal/75 leading-relaxed mb-8">
-              We&apos;ve had a dog menu since day one. Fresh water always out. The courtyard is theirs as much as yours.
+              We&apos;ve had a dog menu since day one. Fresh water always out. Our Chapel Street courtyard is one of the easiest dog-friendly café stops for St Kilda, Elwood, and Balaclava locals.
             </p>
             <Link
               href="/dog-menu"
@@ -448,22 +443,7 @@ export default function Home() {
         NOT a photo above or below it. The mural IS the section background.
         Cobalt sits on top via multiply blend so the graffiti bleeds through.
       */}
-      <section
-        className="relative border-t-4 border-amber py-16 px-6 md:px-16 overflow-hidden"
-        style={{
-          backgroundImage: "url('/assets/cafe/Exterior artwork.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      >
-        {/* Cobalt colour-wash over the exterior mural */}
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(28,95,173,0.88)', mixBlendMode: 'multiply' }}
-        />
-        {/* Extra darkening layer so text stays legible */}
-        <div className="absolute inset-0 bg-cobalt/60" />
-
+      <section className="relative border-t-4 border-amber bg-cobalt py-16 px-6 md:px-16 overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Hours</p>
@@ -476,12 +456,13 @@ export default function Home() {
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Location</p>
             <ul className="font-sans text-sm text-white leading-8">
-              <li>42 Chapel St</li>
-              <li>St Kilda East VIC 3183</li>
+              <li>42 Chapel Street</li>
+              <li>St Kilda East VIC 3182</li>
+              <li>Corner of Chapel & Inkerman</li>
               <li>(03) 90778950</li>
               <li>
                 <a
-                  href="https://maps.google.com/?q=42+Chapel+St+St+Kilda+East+VIC+3183"
+                  href="https://www.google.com/maps/search/?api=1&query=Neighbours+Cafe+42+Chapel+Street+St+Kilda+East+VIC+3182+Australia"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-amber hover:underline underline-offset-4 transition-colors"
@@ -494,8 +475,8 @@ export default function Home() {
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Getting Here</p>
             <ul className="font-sans text-sm text-white leading-8">
-              <li>Tram 3/3a on Chapel St</li>
-              <li>2 min walk</li>
+              <li>Tram 3/3a on Chapel Street</li>
+              <li>Inkerman Street corner</li>
               <li>Dog-friendly parking on side streets</li>
             </ul>
           </div>

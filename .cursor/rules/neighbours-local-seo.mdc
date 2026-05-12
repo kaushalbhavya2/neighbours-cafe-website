@@ -1,0 +1,56 @@
+---
+description: Local SEO rules for Neighbours Cafe / Bakers Lounge site
+globs:
+  - "src/app/**/*"
+  - "src/components/**/*"
+  - "docs/seo-audit.md"
+alwaysApply: true
+---
+
+# Neighbours Cafe Local SEO
+
+Use this rule when changing copy, metadata, routing, structured data, or local business information.
+
+## Business Truth
+
+- Business name: Neighbours Cafe / Neighbours Café.
+- Address: 42 Chapel Street, St Kilda East VIC 3182, Australia.
+- Location cue: corner of Chapel Street and Inkerman Street.
+- Phone: (03) 90778950.
+- Core proposition: dog-friendly brunch cafe with a courtyard, coffee, vegan-friendly menu, and local street-art identity.
+
+Do not reintroduce `VIC 3183` unless the user explicitly asks for it and provides a source. Keep address text, map embeds, directions links, footer, page copy, metadata, and schema consistent.
+
+## Local SEO Targets
+
+Prioritize search intent around:
+
+- dog friendly cafe St Kilda
+- dog friendly cafe St Kilda East
+- brunch St Kilda
+- brunch Chapel Street
+- cafe St Kilda East
+- outdoor brunch Melbourne
+- vegan brunch St Kilda
+- cafe with dog menu Melbourne
+
+## Page Ownership
+
+- Home: broad brand, brunch, dog-friendly courtyard, St Kilda East.
+- Menu: vegan-friendly brunch, plant-based options, signature dishes.
+- Dog Menu: dog-friendly cafe, dog menu, courtyard dog policy.
+- Find Us: address, directions, Chapel Street / Inkerman Street, opening hours, map.
+- About: local story, trust, St Kilda East / Chapel Street identity.
+
+Avoid making multiple pages compete for the exact same primary keyword. Internal link from supporting pages to the page that owns the query.
+
+## Implementation Checklist
+
+- Titles and descriptions should be human-readable, local-intent focused, and unique per route.
+- Use one clear H1 per page.
+- Keep important business information in crawlable text, not only images.
+- Add or preserve internal links between Home, Menu, Dog Menu, Find Us, and About.
+- Use local assets from `public/assets/cafe`; write descriptive alt text.
+- Prefer structured data for `CafeOrCoffeeShop` / `LocalBusiness`, including name, address, telephone, URL, opening hours, image, and sameAs links where available.
+- Keep map embeds and directions links pointed to `Neighbours Cafe 42 Chapel Street St Kilda East VIC 3182 Australia`.
+- Do not add keyword stuffing, hidden text, fake reviews, or unsupported claims.

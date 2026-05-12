@@ -1,7 +1,31 @@
-import Image from 'next/image'
+import type { Metadata } from 'next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import BackButton from '@/components/BackButton'
+import { absoluteUrl } from '@/lib/seo'
+
+export const metadata: Metadata = {
+  title: 'Find Neighbours Café on Chapel Street St Kilda East',
+  description:
+    'Visit Neighbours Café at 42 Chapel St, St Kilda East VIC 3182. Dog-friendly courtyard, brunch until 4pm, near Carlisle Street and Balaclava Station.',
+  alternates: {
+    canonical: absoluteUrl('/find-us'),
+  },
+  openGraph: {
+    title: 'Find Neighbours Café on Chapel Street St Kilda East',
+    description:
+      'Map, hours and directions for Neighbours Café at 42 Chapel St, St Kilda East VIC 3182.',
+    url: absoluteUrl('/find-us'),
+    images: [
+      {
+        url: absoluteUrl('/assets/cafe/EXTERIOR.jpeg'),
+        width: 1200,
+        height: 630,
+        alt: 'Neighbours Café exterior on Chapel Street',
+      },
+    ],
+  },
+}
 
 export default function FindUsPage() {
   return (
@@ -36,10 +60,13 @@ export default function FindUsPage() {
         <div className="relative z-10 max-w-5xl mx-auto">
           <BackButton />
           <div className="mt-12">
-            <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">42 Chapel St · St Kilda East</p>
+            <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">42 Chapel St · St Kilda East VIC 3182</p>
             <h1 className="font-bebas text-[5rem] md:text-[8rem] text-white leading-[0.9] uppercase">
               Find Us
             </h1>
+            <p className="mt-5 max-w-xl font-sans text-base leading-relaxed text-linen/85">
+              We&apos;re on the corner of Chapel Street and Inkerman Street in St Kilda East, close to Carlisle Street, Balaclava Station, and the St Kilda brunch crowd.
+            </p>
           </div>
         </div>
       </section>
@@ -47,7 +74,7 @@ export default function FindUsPage() {
       {/* Map embed */}
       <section className="w-full h-[480px] relative">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5!2d144.9920!3d-37.8650!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad667f0d8b77f0b%3A0x1234!2s42+Chapel+St%2C+St+Kilda+East+VIC+3183!5e0!3m2!1sen!2sau!4v1"
+          src="https://maps.google.com/maps?q=Neighbours%20Cafe%2042%20Chapel%20Street%20St%20Kilda%20East%20VIC%203182%20Australia&t=&z=17&ie=UTF8&iwloc=&output=embed"
           width="100%"
           height="480"
           style={{ border: 0, display: 'block' }}
@@ -58,27 +85,11 @@ export default function FindUsPage() {
         />
       </section>
 
-      {/* ── INFO STRIP: Graffiti 3 as section background ─────────────────────
-          The mural is the background of the info strip, not a photo below it.
-      ──────────────────────────────────────────────────────────────────────── */}
-      <section
-        className="relative border-t-4 border-amber py-16 px-6 md:px-16 overflow-hidden"
-        style={{
-          backgroundImage: "url('/assets/cafe/Graffiti 3.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: 'rgba(28,95,173,0.90)', mixBlendMode: 'multiply' }}
-        />
-        <div className="absolute inset-0 bg-cobalt/60" />
-
-        <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+      <section className="border-t-4 border-amber bg-linen px-6 py-16 md:px-16">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 md:grid-cols-3">
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Hours</p>
-            <ul className="font-sans text-sm text-white leading-8">
+            <ul className="font-sans text-sm text-charcoal/75 leading-8">
               <li>Mon — 7:30am–4pm</li>
               <li>Tue–Wed — 6:30am–4pm</li>
               <li>Thu–Sun — 7:30am–4pm</li>
@@ -86,16 +97,17 @@ export default function FindUsPage() {
           </div>
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Location</p>
-            <ul className="font-sans text-sm text-white leading-8">
+            <ul className="font-sans text-sm text-charcoal/75 leading-8">
               <li>42 Chapel St</li>
-              <li>St Kilda East VIC 3183</li>
+              <li>St Kilda East VIC 3182</li>
+              <li>Corner of Chapel & Inkerman</li>
               <li>(03) 90778950</li>
               <li>
                 <a
-                  href="https://maps.google.com/?q=42+Chapel+St+St+Kilda+East+VIC+3183"
+                  href="https://www.google.com/maps/search/?api=1&query=Neighbours+Cafe+42+Chapel+Street+St+Kilda+East+VIC+3182+Australia"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-amber hover:underline underline-offset-4 transition-colors"
+                  className="font-semibold text-cobalt hover:text-folk-red hover:underline underline-offset-4 transition-colors"
                 >
                   Get directions →
                 </a>
@@ -104,31 +116,15 @@ export default function FindUsPage() {
           </div>
           <div>
             <p className="font-sans text-xs uppercase tracking-widest text-amber mb-4">Getting Here</p>
-            <ul className="font-sans text-sm text-white leading-8">
+            <ul className="font-sans text-sm text-charcoal/75 leading-8">
               <li>Tram 3/3a on Chapel St</li>
-              <li>2 min walk</li>
-              <li>Dog-friendly parking on side streets</li>
+              <li>Near Carlisle Street and Balaclava Station</li>
+              <li>Street parking nearby</li>
+              <li>Dog-friendly courtyard access</li>
             </ul>
           </div>
         </div>
       </section>
-
-      {/* Exterior full-bleed with caption — a final visual payoff on scroll */}
-      <div className="relative h-[340px] w-full overflow-hidden">
-        <Image
-          src="/assets/cafe/EXTERIOR.jpeg"
-          alt="Neighbours Café exterior building"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-linen/80 to-transparent" />
-        <div className="absolute bottom-6 left-0 right-0 text-center">
-          <p className="font-sans text-xs uppercase tracking-widest text-cobalt">
-            That&apos;s the mural building on the corner.
-          </p>
-        </div>
-      </div>
 
       <Footer />
     </main>
